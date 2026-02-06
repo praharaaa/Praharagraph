@@ -54,7 +54,7 @@ function createGalleryCard(item) {
     const article = document.createElement('article');
     article.className = 'gallery-card';
     
-    // Create card HTML structure
+    // Create card HTML structure with week badge on image
     article.innerHTML = `
         <a href="detail.html?id=${item.id}" class="card-link">
             <div class="card-image-wrapper">
@@ -62,11 +62,11 @@ function createGalleryCard(item) {
                      alt="${item.title}" 
                      class="card-image"
                      loading="lazy">
+                <div class="card-week-badge">${item.week}</div>
             </div>
             <div class="card-content">
-                <h3 class="card-title">${item.title}</h3>
                 <p class="card-date">${item.date}</p>
-                <p class="card-week">${item.week}</p>
+                <h3 class="card-title">${item.title}</h3>
             </div>
         </a>
     `;
