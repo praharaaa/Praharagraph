@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praharagraph - Data Visualization Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-container">
+            <h1 class="hero-title">Praharagraph</h1>
+            <p class="hero-subtitle">Data Visualization Portfolio</p>
+            <p class="hero-description">
+                A collection of data visualization projects exploring various datasets 
+                through statistical analysis and creative storytelling.
+            </p>
+        </div>
+    </header>
+
+    <!-- Year Navigation -->
+    <nav class="year-nav">
+        <div class="year-nav-container">
+            <button class="year-btn active" data-year="2018">2018</button>
+            <!-- Add more years here as you create them -->
+        </div>
+    </nav>
+
+    <!-- Gallery Section -->
+    <main class="gallery-section">
+        <div class="gallery-container">
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery items will be loaded by JavaScript -->
+                <!-- Example structure for one card: -->
+                <!--
+                <article class="gallery-card">
+                    <a href="detail.html?id=2018-04-02" class="card-link">
+                        <div class="card-image-wrapper">
+                            <img src="image-url.png" alt="Visualization title" class="card-image">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Visualization Title</h3>
+                            <p class="card-date">April 2, 2018</p>
+                            <p class="card-week">Week 1</p>
+                        </div>
+                    </a>
+                </article>
+                -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">
+                &copy; 2026 Praharagraph. All visualizations created with R and ggplot2.
+            </p>
+            <div class="footer-links">
+                <a href="https://github.com/praharaaa/Tidy-Tuesday" target="_blank" class="footer-link">
+                    GitHub Repository
+                </a>
+                <span class="footer-divider">|</span>
+                <a href="https://github.com/praharaaa" target="_blank" class="footer-link">
+                    Profile
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
