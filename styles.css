@@ -138,7 +138,7 @@ img {
     font-size: 20px;
     font-weight: 800;
     line-height: 28px;
-    color: #6a7282;
+    color: #351E03;
     padding: 8px 16px;
     background: transparent;
     border-bottom: 3px solid transparent;
@@ -261,9 +261,9 @@ img {
 .card-date {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 14px;
-    font-weight: 300;
+    font-weight: 500;
     line-height: 20px;
-    color: #000000;
+    color: #351E03;
 }
 
 .card-title {
@@ -322,7 +322,7 @@ img {
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
-    color: #f4a460;
+    color: #351E03;
     transition: opacity 0.3s ease;
 }
 
@@ -331,7 +331,7 @@ img {
 }
 
 .footer-link svg {
-    stroke: #f4a460;
+    stroke: #351E03;
     flex-shrink: 0;
 }
 
@@ -339,7 +339,7 @@ img {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 14px;
     line-height: 20px;
-    color: #6a7282;
+    color: #351E03;
 }
 
 /* ===========================
@@ -425,7 +425,7 @@ img {
     line-height: 20px;
     letter-spacing: 0.35px;
     text-transform: uppercase;
-    color: #6a7282;
+    color: #351E03;
 }
 
 .detail-title {
@@ -514,7 +514,7 @@ img {
     align-items: center;
     justify-content: center;
     background-color: #f2994a;
-    color: white;
+    color: #351E03;
     border-radius: 10px;
     padding: 12px 24px;
     font-family: 'Plus Jakarta Sans', sans-serif;
