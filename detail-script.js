@@ -54,11 +54,11 @@ function renderDetailPage(item) {
     // Update page title
     document.title = `${item.title} - PRAHARAGRAPH`;
     
-    // Update image
+    // Update image=
     const imageElement = document.getElementById('detail-image');
     imageElement.src = item.imageUrl;
-    imageElement.alt = item.title;
-    
+    imageElement.alt = `Data visualization: ${item.title}. ${item.overview ? item.overview.substring(0, 150) + '...' : ''}`;
+
     // Update date
     document.getElementById('detail-date').textContent = item.date;
     

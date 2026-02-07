@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Skip to main content link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Back Navigation -->
     <nav class="detail-nav">
         <a href="index.html" class="back-button">
@@ -26,22 +29,25 @@
         </a>
     </nav>
 
-    <!-- Detail Content -->
-    <main class="detail-main">
-        <div class="detail-container">
-            <!-- Image Section -->
-            <div class="detail-image-wrapper">
-                <img id="detail-image" class="detail-image" alt="Visualization" />
-            </div>
+<!-- Detail Content -->
+<main class="detail-main" id="main-content">
+    <div class="detail-container">
+        <!-- Header Section -->
+        <header class="detail-header">
+            <p class="detail-date" id="detail-date"></p>
+            <h1 class="detail-title" id="detail-title"></h1>
+        </header>
 
-            <!-- Header Section -->
-            <header class="detail-header">
-                <p class="detail-date" id="detail-date"></p>
-                <h1 class="detail-title" id="detail-title"></h1>
-            </header>
+        <!-- Image Section -->
+        <figure class="detail-image-wrapper" role="img" aria-labelledby="detail-title">
+            <img id="detail-image" 
+                 class="detail-image" 
+                 alt="" 
+                 aria-describedby="detail-overview" />
+        </figure>
 
-            <!-- Content Sections -->
-            <div class="detail-content">
+        <!-- Content Sections -->
+        <div class="detail-content">
                 <!-- Overview -->
                 <section class="detail-section">
                     <h2 class="section-title">Overview</h2>
