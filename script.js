@@ -93,9 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = `detail.html?id=${item.id}`;
         };
         
-        // Determine image height (default 500px, or use imageHeight if specified)
-        const imageHeight = item.imageHeight || 500;
-        
         // Create card HTML
         card.innerHTML = `
             <div class="card-image-wrapper">
@@ -103,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     src="${item.imageUrl}" 
                     alt="${item.title}"
                     class="card-image"
-                    style="height: ${imageHeight}px; object-fit: cover;"
                     loading="lazy"
                 />
             </div>

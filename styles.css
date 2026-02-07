@@ -1,4 +1,159 @@
 /* ===========================
+   CSS Reset & Base Styles
+   =========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--beige-bg);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===========================
+   CSS Variables
+   =========================== */
+:root {
+    --orange: #f2994a;
+    --beige-bg: #F4E6DE;
+    --nav-bg: #FCF2ED;
+    --white: #ffffff;
+    --text-dark: #2d2d2d;
+    --text-gray: #6b6b6b;
+}
+
+/* ===========================
+   Hero Section
+   =========================== */
+.hero {
+    width: 100%;
+    height: 500px;
+    background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--white);
+    padding: 20px;
+}
+
+.hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 80px);
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 500;
+    margin-bottom: 8px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-description {
+    font-size: clamp(14px, 2vw, 18px);
+    line-height: 1.6;
+    opacity: 0.95;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ===========================
+   Year Navigation
+   =========================== */
+.year-nav {
+    background-color: var(--nav-bg);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.year-nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+}
+
+.year-nav-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+.year-tab {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 1.5px;
+    padding: 20px 32px;
+    background: transparent;
+    color: var(--text-gray);
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.year-tab:hover {
+    color: var(--orange);
+    background-color: rgba(242, 153, 74, 0.05);
+}
+
+.year-tab.active {
+    color: var(--orange);
+    border-bottom-color: var(--orange);
+    font-weight: bold;
+}
+
+/* ===========================
    Gallery Section
    =========================== */
 .gallery-section {
