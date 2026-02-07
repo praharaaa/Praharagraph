@@ -1,8 +1,6 @@
 // Main Gallery Page Script
 
-// Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
-    // Get elements
     const yearTabs = document.querySelectorAll('.year-tab');
     const galleryGrid = document.getElementById('gallery');
     
@@ -10,17 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     let currentYear = urlParams.get('year') || '2018';
     
-    // Initialize the page
+    // Initialize
     init();
     
     function init() {
-        // Set active year tab
         setActiveYear(currentYear);
-        
-        // Render gallery for current year
         renderGallery(currentYear);
         
-        // Add event listeners to year tabs
+        // Add click listeners to year tabs
         yearTabs.forEach(tab => {
             tab.addEventListener('click', function() {
                 const year = this.getAttribute('data-year');
@@ -28,13 +23,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 setActiveYear(year);
                 renderGallery(year);
                 
-                // Update URL without reloading
+                // Update URL without reload
                 const newUrl = `${window.location.pathname}?year=${year}`;
                 window.history.pushState({year: year}, '', newUrl);
             });
         });
         
-        // Handle browser back/forward buttons
+        // Handle browser back/forward
         window.addEventListener('popstate', function(event) {
             if (event.state && event.state.year) {
                 currentYear = event.state.year;
@@ -55,19 +50,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function renderGallery(year) {
-        // Clear gallery
         galleryGrid.innerHTML = '';
         
-        // Check if visualizationData exists
+        // Check if data exists
         if (typeof visualizationData === 'undefined') {
             galleryGrid.innerHTML = '<div class="loading">Loading data...</div>';
             return;
         }
         
-        // Get data for the selected year
+        // Get data for selected year
         const yearData = visualizationData[year];
         
-        // If no data for this year
+        // If no data
         if (!yearData || yearData.length === 0) {
             galleryGrid.innerHTML = `
                 <div class="empty-state">
@@ -78,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Create cards for each visualization
+        // Create cards
         yearData.forEach(item => {
             const card = createCard(item);
             galleryGrid.appendChild(card);
@@ -86,14 +80,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function createCard(item) {
-        // Create card element
         const card = document.createElement('div');
         card.className = 'gallery-card';
         card.onclick = function() {
             window.location.href = `detail.html?id=${item.id}`;
         };
         
-        // Create card HTML
         card.innerHTML = `
             <div class="card-image-wrapper">
                 <img 
@@ -104,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 />
             </div>
             <div class="card-content">
-                <span class="card-date">${item.date}</span>
+                <p class="card-date">${item.date}</p>
                 <h3 class="card-title">${item.title}</h3>
             </div>
         `;
