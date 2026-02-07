@@ -280,7 +280,6 @@ img {
     font-size: 17px;  
     font-weight: 700; 
     line-height: 24px;
-    margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 0;
     margin-inline-end: 0;
@@ -530,13 +529,28 @@ img {
     }
     
     .year-nav {
-        padding: 12px 40px;
+        padding: 24px 16px 24px;
     }
 }
 
 @media (min-width: 1024px) {
     .detail-main {
         max-width: 1200px;
+    }
+}
+
+/* Mobile: Year Navigation */
+@media (max-width: 767px) {
+    .year-tabs {
+        justify-content: flex-start;  
+        padding-left: 16px;           
+    }
+}
+
+/* Tablet Mode */
+@media (min-width: 768px) {
+    .year-tabs {
+        justify-content: center;
     }
 }
 
