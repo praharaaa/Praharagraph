@@ -3,72 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Praharagraph - Data Visualization Portfolio</title>
+    <title>PRAHARAGRAPH - Data Visualization Portfolio</title>
+    <meta name="description" content="A portfolio showcasing Tidy Tuesday data visualization projects from 2018-2022">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-container">
-            <h1 class="hero-title">Praharagraph</h1>
-            <p class="hero-subtitle">Data Visualization Portfolio</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">PRAHARAGRAPH</h1>
+            <p class="hero-subtitle">A Data Visualization Journey</p>
             <p class="hero-description">
-                A collection of data visualization projects exploring various datasets 
-                through statistical analysis and creative storytelling.
+                Exploring stories through data visualization<br>
+                #TidyTuesday 2018-2022
             </p>
         </div>
-    </header>
+    </section>
 
     <!-- Year Navigation -->
     <nav class="year-nav">
         <div class="year-nav-container">
-            <button class="year-btn active" data-year="2018">2018</button>
-            <!-- Add more years here as you create them -->
+            <button class="year-tab active" data-year="2018">2018</button>
+            <button class="year-tab" data-year="2019">2019</button>
+            <button class="year-tab" data-year="2020">2020</button>
+            <button class="year-tab" data-year="2021">2021</button>
+            <button class="year-tab" data-year="2022">2022</button>
         </div>
     </nav>
 
     <!-- Gallery Section -->
     <main class="gallery-section">
         <div class="gallery-container">
-            <div class="gallery-grid" id="galleryGrid">
-                <!-- Gallery items will be loaded by JavaScript -->
-                <!-- Example structure for one card: -->
-                <!--
-                <article class="gallery-card">
-                    <a href="detail.html?id=2018-04-02" class="card-link">
-                        <div class="card-image-wrapper">
-                            <img src="image-url.png" alt="Visualization title" class="card-image">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">Visualization Title</h3>
-                            <p class="card-date">April 2, 2018</p>
-                            <p class="card-week">Week 1</p>
-                        </div>
-                    </a>
-                </article>
-                -->
-            </div>
+            <div class="gallery-grid" id="gallery"></div>
         </div>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
-            <p class="footer-text">
-                &copy; 2026 Praharagraph. All visualizations created with R and ggplot2.
-            </p>
-            <div class="footer-links">
-                <a href="https://github.com/praharaaa/Tidy-Tuesday" target="_blank" class="footer-link">
-                    GitHub Repository
-                </a>
-                <span class="footer-divider">|</span>
-                <a href="https://github.com/praharaaa" target="_blank" class="footer-link">
-                    Profile
-                </a>
-            </div>
-        </div>
+        <p>&copy; 2024 PRAHARAGRAPH. All rights reserved.</p>
     </footer>
 
+    <!-- Scripts -->
     <script src="data.js"></script>
     <script src="script.js"></script>
 </body>

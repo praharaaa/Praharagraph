@@ -1,117 +1,102 @@
-// ===== Detail Page Script =====
+// Detail Page Script
 
-// Wait for DOM to be fully loaded
+// Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
     // Get visualization ID from URL
     const urlParams = new URLSearchParams(window.location.search);
-    const vizId = urlParams.get('id');
+    const visualizationId = urlParams.get('id');
     
-    if (!vizId) {
-        showError('No visualization ID provided');
+    // If no ID, redirect to home
+    if (!visualizationId) {
+        window.location.href = 'index.html';
         return;
     }
     
-    // Check if data exists
+    // Check if visualizationData exists
     if (typeof visualizationData === 'undefined') {
-        showError('Data not loaded');
+        document.querySelector('.detail-container').innerHTML = '<div class="loading">Loading data...</div>';
         return;
     }
     
     // Find the visualization data
-    const vizData = findVisualization(vizId);
+    let currentItem = null;
     
-    if (!vizData) {
-        showError('Visualization not found');
+    // Search through all years
+    for (const year in visualizationData) {
+        const found = visualizationData[year].find(item => item.id === visualizationId);
+        if (found) {
+            currentItem = found;
+            break;
+        }
+    }
+    
+    // If not found, show error
+    if (!currentItem) {
+        document.querySelector('.detail-container').innerHTML = `
+            <div class="empty-state">
+                <h2>Visualization not found</h2>
+                <p>The requested visualization could not be found.</p>
+                <a href="index.html" class="back-button" style="display: inline-flex; margin-top: 20px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    Back to Gallery
+                </a>
+            </div>
+        `;
         return;
     }
     
-    // Display the visualization details
-    displayVisualizationDetails(vizData);
-    
-    // Update page title
-    document.title = `${vizData.title} - Praharagraph`;
+    // Populate the page with data
+    renderDetailPage(currentItem);
 });
 
-// ===== Find Visualization by ID =====
-function findVisualization(id) {
-    // Search through all years
-    for (const year in visualizationData) {
-        const found = visualizationData[year].find(item => item.id === id);
-        if (found) return found;
+function renderDetailPage(item) {
+    // Update page title
+    document.title = `${item.title} - PRAHARAGRAPH`;
+    
+    // Update meta elements
+    document.getElementById('detail-date').textContent = item.date;
+    document.getElementById('detail-week').textContent = item.week || '';
+    document.getElementById('detail-title').textContent = item.title;
+    
+    // Update image
+    const imageElement = document.getElementById('detail-image');
+    imageElement.src = item.imageUrl;
+    imageElement.alt = item.title;
+    
+    // Update overview
+    document.getElementById('detail-overview').textContent = item.overview;
+    
+    // Update key findings
+    const findingsList = document.getElementById('detail-findings');
+    findingsList.innerHTML = '';
+    
+    if (item.keyFindings && item.keyFindings.length > 0) {
+        item.keyFindings.forEach(finding => {
+            const li = document.createElement('li');
+            li.textContent = finding;
+            findingsList.appendChild(li);
+        });
     }
-    return null;
-}
-
-// ===== Display Visualization Details =====
-function displayVisualizationDetails(data) {
-    const container = document.getElementById('detailContent');
     
-    // Set image height class if specified
-    const imageHeight = data.imageHeight || 600;
-    const imageStyle = `max-height: ${imageHeight}px; width: auto; margin: 0 auto;`;
+    // Update data source
+    document.getElementById('detail-source').textContent = item.dataSource;
     
-    // Build HTML structure
-    container.innerHTML = `
-        <header class="detail-header">
-            <h1 class="detail-title">${data.title}</h1>
-            <div class="detail-meta">
-                <span class="detail-date">${data.date}</span>
-                <span class="detail-divider">•</span>
-                <span class="detail-week">${data.week}</span>
-            </div>
-        </header>
-
-        <section class="detail-image-section">
-            <img src="${data.imageUrl}" 
-                 alt="${data.title}" 
-                 class="detail-image"
-                 style="${imageStyle}">
-        </section>
-
-        <section class="detail-info">
-            <div class="info-block">
-                <h2 class="info-title">Overview</h2>
-                <p class="info-text">${data.overview}</p>
-            </div>
-
-            <div class="info-block">
-                <h2 class="info-title">Key Findings</h2>
-                <ul class="findings-list">
-                    ${data.keyFindings.map(finding => `<li>${finding}</li>`).join('')}
-                </ul>
-            </div>
-
-            <div class="info-block">
-                <h2 class="info-title">Data Source</h2>
-                <p class="info-text">${data.dataSource}</p>
-            </div>
-
-            <div class="info-block">
-                <h2 class="info-title">Tools Used</h2>
-                <div class="tools-tags">
-                    ${data.tools.map(tool => `<span class="tool-tag">${tool}</span>`).join('')}
-                </div>
-            </div>
-
-            <div class="info-block">
-                <a href="${data.codeLink}" target="_blank" class="code-button">
-                    View Code on GitHub →
-                </a>
-            </div>
-        </section>
-    `;
-}
-
-// ===== Show Error Message =====
-function showError(message) {
-    const container = document.getElementById('detailContent');
-    container.innerHTML = `
-        <div style="text-align: center; padding: 60px 20px;">
-            <h2 style="color: #666; margin-bottom: 20px;">Oops!</h2>
-            <p style="color: #999; font-size: 1.125rem;">${message}</p>
-            <a href="index.html" style="display: inline-block; margin-top: 24px; padding: 12px 24px; background: #8B7355; color: white; text-decoration: none; border-radius: 8px;">
-                ← Back to Gallery
-            </a>
-        </div>
-    `;
+    // Update tools
+    const toolsGrid = document.getElementById('detail-tools');
+    toolsGrid.innerHTML = '';
+    
+    if (item.tools && item.tools.length > 0) {
+        item.tools.forEach(tool => {
+            const badge = document.createElement('span');
+            badge.className = 'tool-badge';
+            badge.textContent = tool;
+            toolsGrid.appendChild(badge);
+        });
+    }
+    
+    // Update code link
+    const codeLink = document.getElementById('detail-code-link');
+    codeLink.href = item.codeLink;
 }

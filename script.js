@@ -1,110 +1,118 @@
-// ===== Gallery Page Script =====
+// Main Gallery Page Script
 
-// Wait for DOM to be fully loaded
+// Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
+    // Get elements
+    const yearTabs = document.querySelectorAll('.year-tab');
+    const galleryGrid = document.getElementById('gallery');
     
-    // Initialize the gallery
-    initGallery();
+    // Get current year from URL or default to 2018
+    const urlParams = new URLSearchParams(window.location.search);
+    let currentYear = urlParams.get('year') || '2018';
     
-    // Set up year navigation buttons
-    setupYearNavigation();
-});
-
-// ===== Initialize Gallery =====
-function initGallery() {
-    const galleryGrid = document.getElementById('galleryGrid');
+    // Initialize the page
+    init();
     
-    // Check if data exists (from data.js)
-    if (typeof visualizationData === 'undefined') {
-        galleryGrid.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">Loading visualizations...</p>';
-        return;
-    }
-    
-    // Get the active year (default to 2018)
-    const activeYear = document.querySelector('.year-btn.active')?.dataset.year || '2018';
-    
-    // Load visualizations for the active year
-    loadVisualizations(activeYear);
-}
-
-// ===== Load Visualizations into Grid =====
-function loadVisualizations(year) {
-    const galleryGrid = document.getElementById('galleryGrid');
-    const data = visualizationData[year];
-    
-    // Clear existing content
-    galleryGrid.innerHTML = '';
-    
-    // Check if data exists for this year
-    if (!data || data.length === 0) {
-        galleryGrid.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">No visualizations found for this year.</p>';
-        return;
-    }
-    
-    // Create card for each visualization
-    data.forEach(item => {
-        const card = createGalleryCard(item);
-        galleryGrid.appendChild(card);
-    });
-}
-
-// ===== Create Gallery Card Element =====
-function createGalleryCard(item) {
-    // Create article element
-    const article = document.createElement('article');
-    article.className = 'gallery-card';
-    
-    // Create card HTML structure with week badge on image
-    article.innerHTML = `
-        <a href="detail.html?id=${item.id}" class="card-link">
-            <div class="card-image-wrapper">
-                <img src="${item.imageUrl}" 
-                     alt="${item.title}" 
-                     class="card-image"
-                     loading="lazy">
-                <div class="card-week-badge">${item.week}</div>
-            </div>
-            <div class="card-content">
-                <p class="card-date">${item.date}</p>
-                <h3 class="card-title">${item.title}</h3>
-            </div>
-        </a>
-    `;
-    
-    return article;
-}
-
-// ===== Setup Year Navigation =====
-function setupYearNavigation() {
-    const yearButtons = document.querySelectorAll('.year-btn');
-    
-    yearButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remove active class from all buttons
-            yearButtons.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            // Get selected year
-            const selectedYear = this.dataset.year;
-            
-            // Load visualizations for selected year
-            loadVisualizations(selectedYear);
-            
-            // Smooth scroll to gallery
-            document.querySelector('.gallery-section').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
+    function init() {
+        // Set active year tab
+        setActiveYear(currentYear);
+        
+        // Render gallery for current year
+        renderGallery(currentYear);
+        
+        // Add event listeners to year tabs
+        yearTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const year = this.getAttribute('data-year');
+                currentYear = year;
+                setActiveYear(year);
+                renderGallery(year);
+                
+                // Update URL without reloading
+                const newUrl = `${window.location.pathname}?year=${year}`;
+                window.history.pushState({year: year}, '', newUrl);
             });
         });
-    });
-}
-
-// ===== Handle Image Loading Errors =====
-document.addEventListener('error', function(e) {
-    if (e.target.tagName === 'IMG') {
-        // Replace broken image with placeholder
-        e.target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect fill="%23f0f0f0" width="400" height="300"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em"%3EImage not available%3C/text%3E%3C/svg%3E';
+        
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.year) {
+                currentYear = event.state.year;
+                setActiveYear(currentYear);
+                renderGallery(currentYear);
+            }
+        });
     }
-}, true);
+    
+    function setActiveYear(year) {
+        yearTabs.forEach(tab => {
+            if (tab.getAttribute('data-year') === year) {
+                tab.classList.add('active');
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+    }
+    
+    function renderGallery(year) {
+        // Clear gallery
+        galleryGrid.innerHTML = '';
+        
+        // Check if visualizationData exists
+        if (typeof visualizationData === 'undefined') {
+            galleryGrid.innerHTML = '<div class="loading">Loading data...</div>';
+            return;
+        }
+        
+        // Get data for the selected year
+        const yearData = visualizationData[year];
+        
+        // If no data for this year
+        if (!yearData || yearData.length === 0) {
+            galleryGrid.innerHTML = `
+                <div class="empty-state">
+                    <h2>No visualizations yet for ${year}</h2>
+                    <p>Check back later for more content!</p>
+                </div>
+            `;
+            return;
+        }
+        
+        // Create cards for each visualization
+        yearData.forEach(item => {
+            const card = createCard(item);
+            galleryGrid.appendChild(card);
+        });
+    }
+    
+    function createCard(item) {
+        // Create card element
+        const card = document.createElement('div');
+        card.className = 'gallery-card';
+        card.onclick = function() {
+            window.location.href = `detail.html?id=${item.id}`;
+        };
+        
+        // Determine image height (default 500px, or use imageHeight if specified)
+        const imageHeight = item.imageHeight || 500;
+        
+        // Create card HTML
+        card.innerHTML = `
+            <div class="card-image-wrapper">
+                <img 
+                    src="${item.imageUrl}" 
+                    alt="${item.title}"
+                    class="card-image"
+                    style="height: ${imageHeight}px; object-fit: cover;"
+                    loading="lazy"
+                />
+            </div>
+            <div class="card-content">
+                <span class="card-date">${item.date}</span>
+                <h3 class="card-title">${item.title}</h3>
+            </div>
+        `;
+        
+        return card;
+    }
+});
