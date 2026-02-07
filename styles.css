@@ -388,6 +388,18 @@ img {
     gap: 32px;
 }
 
+.detail-header {
+    order: 2;
+}
+
+.detail-image-wrapper {
+    order: 1;
+}
+
+.detail-content {
+    order: 3;
+}
+
 .detail-image-wrapper {
     width: 100%;
     border-radius: 10px;

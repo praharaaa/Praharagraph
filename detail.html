@@ -26,55 +26,70 @@
         </a>
     </nav>
 
-    <!-- Detail Content -->
-    <main class="detail-main">
+        <!-- Detail Content -->
+    <main class="detail-main" id="main-content" role="main">
         <div class="detail-container">
-            <!-- Image Section -->
-            <div class="detail-image-wrapper">
-                <img id="detail-image" class="detail-image" alt="Visualization" />
-            </div>
-
+            
             <!-- Header Section -->
             <header class="detail-header">
-                <p class="detail-date" id="detail-date"></p>
-                <h1 class="detail-title" id="detail-title"></h1>
+                <p class="detail-date" id="detail-date" aria-live="polite">
+                    <!-- JavaScript will populate this -->
+                </p>
+                <h1 class="detail-title" id="detail-title" aria-live="polite">
+                    Loading visualization details...
+                </h1>
             </header>
 
+            <!-- Image Section -->
+            <figure class="detail-image-wrapper" role="img" aria-labelledby="detail-title">
+                <img id="detail-image" 
+                     class="detail-image" 
+                     alt="Data visualization loading..." 
+                     aria-describedby="detail-overview" />
+            </figure>
+
             <!-- Content Sections -->
-            <div class="detail-content">
+            <div class="detail-content" role="region" aria-label="Visualization details">
+                
                 <!-- Overview -->
-                <section class="detail-section">
-                    <h2 class="section-title">Overview</h2>
+                <section class="detail-section" aria-labelledby="overview-heading">
+                    <h2 class="section-title" id="overview-heading">Overview</h2>
                     <p class="section-text" id="detail-overview"></p>
                 </section>
 
                 <!-- Key Findings -->
-                <section class="detail-section">
-                    <h2 class="section-title">Key Findings</h2>
+                <section class="detail-section" aria-labelledby="findings-heading">
+                    <h2 class="section-title" id="findings-heading">Key Findings</h2>
                     <ul class="findings-list" id="detail-findings"></ul>
                 </section>
 
                 <!-- Tools Used -->
-                <section class="detail-section">
-                    <h2 class="section-title">Tools Used</h2>
+                <section class="detail-section" aria-labelledby="tools-heading">
+                    <h2 class="section-title" id="tools-heading">Tools Used</h2>
                     <div class="tools-grid" id="detail-tools"></div>
                 </section>
 
                 <!-- Data Source -->
-                <section class="detail-section">
-                    <h2 class="section-title">Data Source</h2>
+                <section class="detail-section" aria-labelledby="source-heading">
+                    <h2 class="section-title" id="source-heading">Data Source</h2>
                     <p class="section-text" id="detail-source"></p>
                 </section>
 
                 <!-- View Code Button -->
                 <section class="detail-section">
-                    <a id="detail-code-link" href="#" target="_blank" rel="noopener noreferrer" class="code-button">
+                    <a id="detail-code-link" 
+                       href="#" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="code-button"
+                       aria-label="View source code on GitHub">
                         View Code on GitHub
                     </a>
                 </section>
             </div>
         </div>
     </main>
+
 
     <!-- Footer -->
     <footer class="footer">
