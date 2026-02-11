@@ -234,9 +234,9 @@ img {
     transition: transform 0.3s ease;
 }
 
-.gallery-card:hover {
+.gallery-card:hover .card-image {
     transform: translateY(-4px);
-    color: #f2994a;
+    filter: grayscale(0%);
 }
 
 .card-image-wrapper {
@@ -250,6 +250,8 @@ img {
     height: auto;
     display: block;
     object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
 }
 
 .card-content {
