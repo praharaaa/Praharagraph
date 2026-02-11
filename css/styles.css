@@ -13,8 +13,8 @@ html {
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: #f4e6de;
-    color: #2c2c2c;
+    background-color: #131313;
+    color: #131313;
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -46,7 +46,7 @@ img {
     height: 191px;
     background-image: url('https://raw.githubusercontent.com/praharaaa/Praharagraph/main/img/Forest_and_Native_House_by_Raden_Saleh.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: bottom;
     background-repeat: no-repeat;
     position: relative;
     display: flex;
@@ -111,13 +111,14 @@ img {
    Year Navigation
    =========================== */
 .year-nav {
-    background-color: #fcf2ed;
-    border-bottom: 1px solid #f3f4f6;
+    background-color: #1313134a;
+    border-bottom: 1px solid #2e2e2e;
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
     padding: 24px 16px 0;
     position: sticky;
     top: 0;
     z-index: 100;
+    backdrop-filter: blur(8px);
 }
 
 .year-tabs {
@@ -138,7 +139,7 @@ img {
     font-size: 20px;
     font-weight: 800;
     line-height: 28px;
-    color: #351E03;
+    color: #FFDEC3;
     padding: 8px 16px;
     background: transparent;
     border-bottom: 3px solid transparent;
@@ -263,7 +264,7 @@ img {
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
-    color: #351E03;
+    color: #FFDEC3;
 }
 
 .card-title {
@@ -271,7 +272,7 @@ img {
     font-size: 16px;
     font-weight: 500;
     line-height: 22px;
-    color: #2c2c2c;
+    color: #ffffff;
     transition: color 0.3s ease;
 }
 
@@ -291,7 +292,7 @@ img {
    Footer
    =========================== */
 .footer {
-    background-color: #f4e6de;
+    background-color: #131313;
     padding: 48px 16px;
     display: flex;
     flex-direction: column;
@@ -305,7 +306,7 @@ img {
     font-size: 14px;
     font-weight: 300;
     line-height: 20px;
-    color: #000000;
+    color: #ffffff;
 }
 
 .footer-links {
@@ -322,7 +323,7 @@ img {
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
-    color: #351E03;
+    color: #FFDEC3;
     transition: opacity 0.3s ease;
 }
 
@@ -331,7 +332,7 @@ img {
 }
 
 .footer-link svg {
-    stroke: #351E03;
+    stroke: #FFDEC3;
     flex-shrink: 0;
 }
 
@@ -339,15 +340,15 @@ img {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 14px;
     line-height: 20px;
-    color: #351E03;
+    color: #FFDEC3;
 }
 
 /* ===========================
    Detail Page - Navigation
    =========================== */
 .detail-nav {
-    background-color: #fcf2ed;
-    border-bottom: 1px solid #f3f4f6;
+    background-color: #1313134a;
+    border-bottom: 1px solid #2e2e2e;
     padding: 24px 16px;
     justify-content: center;
 }
@@ -360,7 +361,7 @@ img {
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
-    color: #4a5565;
+    color: #FFDEC3;
     transition: color 0.3s ease;
 }
 
@@ -369,7 +370,7 @@ img {
 }
 
 .back-button svg {
-    stroke: currentColor;
+    stroke: #FFDEC3;
     flex-shrink: 0;
 }
 
@@ -425,7 +426,7 @@ img {
     line-height: 20px;
     letter-spacing: 0.35px;
     text-transform: uppercase;
-    color: #351E03;
+    color: #FFDEC3;
 }
 
 .detail-title {
@@ -433,7 +434,7 @@ img {
     font-size: 32px;
     font-weight: 700;
     line-height: 48px;
-    color: #101828;
+    color: #FFDEC3;
 }
 
 .detail-content {
@@ -453,7 +454,7 @@ img {
     font-size: 20px;
     font-weight: 600;
     line-height: 28px;
-    color: #1e2939;
+    color: #FFDEC3;
 }
 
 .section-text {
@@ -461,7 +462,7 @@ img {
     font-size: 16px;
     font-weight: 400;
     line-height: 26px;
-    color: #364153;
+    color: #FFFFFF;
 }
 
 .findings-list {
@@ -478,7 +479,7 @@ img {
     font-size: 16px;
     font-weight: 400;
     line-height: 26px;
-    color: #364153;
+    color: #FFFFFF;
 }
 
 .findings-list li::before {
@@ -486,7 +487,7 @@ img {
     position: absolute;
     left: 0;
     top: 0;
-    color: #f2994a;
+    color: #FFDEC3;
     font-size: 16px;
     line-height: 26px;
 }
@@ -498,7 +499,7 @@ img {
 }
 
 .tool-badge {
-    background-color: white;
+    background-color: #FFDEC3;
     border: 1px solid #e5e7eb;
     border-radius: 100px;
     padding: 6px 12px;
@@ -513,8 +514,8 @@ img {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #f2994a;
-    color: #351E03;
+    background-color: #FFDEC3;
+    color: #131313;
     border-radius: 10px;
     padding: 12px 24px;
     font-family: 'Plus Jakarta Sans', sans-serif;
