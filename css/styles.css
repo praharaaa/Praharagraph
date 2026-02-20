@@ -253,7 +253,7 @@ img {
     transition: filter 0.3s ease;
 }
 
-.card-image:hover{
+.card-image:hover {
     filter: grayscale(0%);
 }
 
