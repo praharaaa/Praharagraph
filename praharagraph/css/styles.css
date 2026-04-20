@@ -38,6 +38,8 @@ img {
     display: block;
 }
 
+.header-logo { font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #FFDEC3; text-decoration: none; }
+
 /* ===========================
    Hero Section
    =========================== */
