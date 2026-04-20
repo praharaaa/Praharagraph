@@ -12,7 +12,7 @@ a { text-decoration: none; color: inherit; }
 .nav-link:hover { opacity: 1; }
 
 /* Hero */
-.hero { width: 100%; min-height: 100vh; background-color: #131313; background-image: url('https://raw.githubusercontent.com/praharaaa/Praharagraph/main/praharagraph/img/Forest_and_Native_House_by_Raden_Saleh.jpg'); background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; }
+.hero { width: 100%; min-height: 100vh; background-image: url('https://raw.githubusercontent.com/praharaaa/Praharagraph/main/img/Forest_and_Native_House_by_Raden_Saleh.jpg'); background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(167deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.45) 100%); }
 .hero-text { position: relative; z-index: 2; text-align: center; padding: 0 24px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
 .hero-greeting { font-size: 14px; font-weight: 300; letter-spacing: 0.2px; opacity: 0.9; }
@@ -29,6 +29,7 @@ a { text-decoration: none; color: inherit; }
 @media (min-width: 768px) { .projects-grid { grid-template-columns: repeat(3, 1fr); } }
 
 .project-card { display: flex; flex-direction: column; gap: 12px; cursor: pointer; transition: transform 0.3s ease; }
+a.project-card { text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 12px; }
 .project-card:hover { transform: translateY(-4px); }
 .project-image { width: 100%; aspect-ratio: 4/3; background-color: #2e2e2e; border-radius: 4px; }
 .project-content { padding: 0 4px; display: flex; flex-direction: column; gap: 6px; }

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 Day Chart Challenge — Bayu Prahara</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Six+Caps&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #131313; color: #fff; line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Header */
+        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 24px; background: rgba(19,19,19,0.7); backdrop-filter: blur(8px); border-bottom: 1px solid #2e2e2e; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .header-logo { font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #FFDEC3; }
+        .back-link { font-size: 14px; font-weight: 500; color: #FFDEC3; opacity: 0.8; transition: opacity 0.2s; display: flex; align-items: center; gap: 6px; }
+        .back-link:hover { opacity: 1; }
+
+        /* Page Header */
+        .page-header { padding: 120px 24px 48px; max-width: 800px; margin: 0 auto; }
+        .page-title { font-family: 'Six Caps', sans-serif; font-size: 80px; line-height: 1; letter-spacing: 2px; color: #FFDEC3; margin-bottom: 16px; }
+        .page-intro { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.75); line-height: 1.8; max-width: 600px; }
+
+        /* Year Tabs */
+        .year-nav { border-bottom: 1px solid #2e2e2e; padding: 0 24px; max-width: 800px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
+        .year-nav::-webkit-scrollbar { display: none; }
+        .year-tab { font-size: 14px; font-weight: 600; color: rgba(255,222,195,0.5); padding: 12px 20px; background: transparent; border: none; border-bottom: 2px solid transparent; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+        .year-tab.active { color: #FFDEC3; border-bottom-color: #FFDEC3; }
+        .year-tab:hover { color: #FFDEC3; }
+
+        /* Entries */
+        .entries { max-width: 800px; margin: 0 auto; padding: 48px 24px 80px; display: flex; flex-direction: column; gap: 80px; }
+        .entry { display: flex; flex-direction: column; gap: 24px; }
+        .entry-number { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,222,195,0.5); }
+        .entry-title { font-size: 24px; font-weight: 700; color: #FFDEC3; line-height: 1.3; }
+        .entry-chart { width: 100%; border-radius: 8px; overflow: hidden; background: #1e1e1e; min-height: 400px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 14px; }
+        .entry-chart iframe { width: 100%; border: none; }
+        .entry-body { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.8); line-height: 1.85; }
+        .entry-divider { border: none; border-top: 1px solid #2e2e2e; }
+
+        @media (min-width: 768px) { .page-title { font-size: 120px; } }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <a href="../" class="header-logo">BAYU PRAHARA</a>
+            <a href="../" class="back-link">
+                ← Back to Home
+            </a>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1 class="page-title">30 DAY CHART CHALLENGE</h1>
+        <p class="page-intro">One data visualization a day, every day. Each chart is a small experiment — a chance to play with real data and find something worth looking at.</p>
+    </div>
+
+    <div class="year-nav" id="yearNav"></div>
+
+    <div class="entries" id="entriesContainer"></div>
+
+    <script>
+        const data = {
+            2025: [
+                {
+                    day: 1,
+                    title: "Your Chart Title Here",
+                    datawrapperUrl: "", // paste your Datawrapper embed URL here
+                    body: "Write your thoughts, context, and reaction about this chart here."
+                },
+                // Add more entries below following the same format:
+                // { day: 2, title: "...", datawrapperUrl: "...", body: "..." },
+            ],
+            // Add more years like:
+            // 2026: [ ... ]
+        };
+
+        const years = Object.keys(data).sort((a, b) => b - a);
+        let activeYear = years[0];
+
+        function renderYearTabs() {
+            const nav = document.getElementById('yearNav');
+            nav.innerHTML = years.map(y => `
+                <button class="year-tab ${y === activeYear ? 'active' : ''}" onclick="switchYear('${y}')">${y}</button>
+            `).join('');
+        }
+
+        function renderEntries() {
+            const container = document.getElementById('entriesContainer');
+            const entries = data[activeYear];
+            container.innerHTML = entries.map((entry, i) => `
+                <div class="entry">
+                    <span class="entry-number">Day ${entry.day}</span>
+                    <h2 class="entry-title">${entry.title}</h2>
+                    <div class="entry-chart">
+                        ${entry.datawrapperUrl
+                            ? `<iframe src="${entry.datawrapperUrl}" height="400" scrolling="no"></iframe>`
+                            : 'Chart embed coming soon'}
+                    </div>
+                    <p class="entry-body">${entry.body}</p>
+                    ${i < entries.length - 1 ? '<hr class="entry-divider">' : ''}
+                </div>
+            `).join('');
+        }
+
+        function switchYear(year) {
+            activeYear = year;
+            renderYearTabs();
+            renderEntries();
+        }
+
+        renderYearTabs();
+        renderEntries();
+    </script>
+
+</body>
+</html>
