@@ -114,7 +114,7 @@ img {
     z-index: 2;
     text-align: center;
     color: white;
-    padding: 0 20px;
+    padding: 64px 20px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -227,6 +227,10 @@ img {
     
     .hero {
         height: 300px;
+    }
+
+    .hero-content {
+        padding-top: 0;
     }
     
     .hero-title {
