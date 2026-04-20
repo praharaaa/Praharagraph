@@ -39,14 +39,50 @@ img {
 }
 
 /* ===========================
-   Header Section
+   Header
    =========================== */
-.header { top: 0; left: 0; right: 0; z-index: 100; padding: 20px 24px; background: rgba(19, 19, 19, 0); }
-.header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
-.header-logo { font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #FFDEC3; }
-.header-nav { display: flex; gap: 24px; }
-.nav-link { font-size: 14px; font-weight: 500; color: #FFDEC3; opacity: 0.8; transition: opacity 0.2s; }
-.nav-link:hover { opacity: 1; }
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 24px;
+    background: transparent;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header-logo {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #FFDEC3;
+    text-decoration: none;
+}
+
+.header-nav {
+    display: flex;
+    gap: 24px;
+}
+
+.nav-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFDEC3;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.nav-link:hover {
+    opacity: 1;
+}
 
 /* ===========================
    Hero Section
@@ -126,6 +162,7 @@ img {
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
     padding: 24px 16px 0;
     position: sticky;
+    top: 0;
     z-index: 99;
     backdrop-filter: blur(8px);
 }
@@ -569,8 +606,8 @@ img {
 /* Mobile: Year Navigation */
 @media (max-width: 767px) {
     .year-tabs {
-        justify-content: flex-start;  
-        padding-left: 16px;           
+        justify-content: flex-start;
+        padding-left: 16px;
     }
 }
 
