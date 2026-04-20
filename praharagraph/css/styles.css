@@ -38,53 +38,7 @@ img {
     display: block;
 }
 
-/* ===========================
-   Header
-   =========================== */
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    padding: 20px 24px;
-    background: rgba(19,19,19,0.7);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid #2e2e2e;
-}
-
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.header-logo {
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #FFDEC3;
-    text-decoration: none;
-}
-
-.header-nav {
-    display: flex;
-    gap: 24px;
-}
-
-.nav-link {
-    font-size: 14px;
-    font-weight: 500;
-    color: #FFDEC3;
-    opacity: 0.8;
-    transition: opacity 0.2s;
-}
-
-.nav-link:hover {
-    opacity: 1;
-}
+.header-logo { font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #FFDEC3; text-decoration: none; }
 
 /* ===========================
    Hero Section
