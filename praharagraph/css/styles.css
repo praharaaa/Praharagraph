@@ -41,7 +41,7 @@ img {
 /* ===========================
    Header Section
    =========================== */
-.header { position: relative; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 24px; background: rgba(19, 19, 19, 0); backdrop-filter: blur(8px); border-bottom: 1px solid #2e2e2e; }
+.header { top: 0; left: 0; right: 0; z-index: 100; padding: 20px 24px; background: rgba(19, 19, 19, 0); }
 .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
 .header-logo { font-size: 14px; font-weight: 700; letter-spacing: 2px; color: #FFDEC3; }
 .header-nav { display: flex; gap: 24px; }
@@ -54,7 +54,6 @@ img {
 .hero {
     width: 100%;
     height: 191px;
-    margin-top: 65px;
     background-image: url('https://raw.githubusercontent.com/praharaaa/Praharagraph/main/praharagraph/img/Forest_and_Native_House_by_Raden_Saleh.jpg');
     background-size: cover;
     background-position: bottom;
@@ -127,7 +126,6 @@ img {
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
     padding: 24px 16px 0;
     position: sticky;
-    top: 65px;
     z-index: 99;
     backdrop-filter: blur(8px);
 }
