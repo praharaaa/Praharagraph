@@ -46,9 +46,12 @@
 
       <!-- Intro section -->
       <section class="detail-section challenge-intro">
-        <h1 class="detail-title">What is the 30 Day Chart Challenge?</h1>
+        <h1 class="detail-title">Why Did I Join This Trend?</h1>
         <p class="section-text">
-          Short English intro about the challenge... (nanti kamu isi).
+          The 30-Day Chart Challenge is a challenge to create and share a data visualization on any topic, where the organizers set a daily prompt to make it easier for participants. This is my first time joining this trend for fun and to see if I can be consistent enough to create 30 visualizations during April. Of course, 30-day challenges can drain a lot of time and energy. So, I set one rule for myself: use Datawrapper as my main tool for creating visualizations, though I still use R for data cleaning. And voila, I finished the challenge!
+        </p>
+        <p class="section-text"></p>
+          I should mention this, because I'm using Datawrapper's responsive iframe embed, some visualizations may look 'broken' when opened on mobile.
         </p>
       </section>
 
@@ -57,9 +60,15 @@
 
       <!-- Lessons learned -->
       <section class="detail-section challenge-lessons">
-        <h2 class="section-title">What I Learned</h2>
+        <h1 class="detail-title">What I Learned</h1>
         <p class="section-text">
-          Refleksi akhir setelah 30 hari... (nanti kamu isi).
+          Joining this challenge made me push myself to be consistent and creative day by day. Compared to the Tidy Tuesday Challenge, where the organizers gave us the dataset to use, in this challenge I was free to choose whatever dataset I wanted. Sometimes it felt so easy, other times I struggled to pick which dataset I needed to visualize. There are so many good datasets that I could visualize, but the more I browsed online, the more time I wasted.
+        </p>
+        <p class="section-text"></p>
+          Moreover, Datawrapper doesn't give me full freedom to create what I want. I don't see this as a limitation. In fact, it made me explore further and challenged me to find ways to create certain visualizations within those constraints. Overall I love Datawrapper, especially the tooltips; it's really powerful for making charts more interactive. I even deliberately pushed further to see how far I could take Datawrapper. And so far, scatter plot is my favorite chart in Datawrapper.
+        </p>
+        <p class="section-text"></p>
+          So that's the visualizations I created during April. Hopefully, I can participate in this challenge again next year.
         </p>
       </section>
 
@@ -93,7 +102,6 @@
     renderWeeks();
   </script>
 
-  <!-- Datawrapper resize script (sekaligus untuk semua iframe) -->
   <script>
     window.addEventListener("message", function (a) {
       if (void 0 !== a.data["datawrapper-height"]) {
